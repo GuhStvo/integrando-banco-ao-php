@@ -9,6 +9,7 @@
 <body style="margin: 1%;">
     <div class="container">
         <h4 style="margin-bottom: 15px;">Inclusão de Categorias</h4>
+        <i class="bi bi-pen-fill"></i>
         <form action="_inserir_categoria.php" method="post">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="desc_categoria floatingInput" name="desc_categoria" required placeholder="name@example.com">
