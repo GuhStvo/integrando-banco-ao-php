@@ -12,6 +12,7 @@ include 'menu.php';
 <div class="container">
 <a href="inserir_categoria.php" class="btn btn-primary">Incluir</a>  
 <br/>
+
 <?php
     include 'conexao.php';
  
@@ -27,7 +28,7 @@ include 'menu.php';
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
-    while ($array = mysqli_fetch_array($busca)) {
+    while ($array = mysqli_fetch_array($busca)) {        
        $id_categoria = $array['id_categoria'];
        $desc_categoria = $array['desc_categoria'];
        echo "<tr>";
@@ -36,8 +37,27 @@ include 'menu.php';
        echo "<td><a class='btn btn-primary'
        href='editar_categoria.php?id_categoria= $id_categoria'>
        Editar</a></td>";
-       echo "<td><a href='excluir_categoria.php?id_categoria= $id_categoria'' class='btn btn-danger'>Excluir</a></td>";
+       echo "<td><a data-bs-toggle='modal' data-bs-target='#exampleModal' href='excluir_categoria.php?id_categoria= $id_categoria'' class='btn btn-danger '>Excluir</a></td>";
        echo "</tr>";
+
+       echo "<!-- Modal -->
+       <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+         <div class='modal-dialog modal-dialog-centered'>
+           <div class='modal-content'>
+             <div class='modal-header'>
+               <h1 class='modal-title fs-5' id='exampleModalLabel'>Excluir categoria</h1>
+               <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+             </div>
+             <div class='modal-body'>
+               Excluir categoria selecionada do banco de dados?
+             </div>
+             <div class='modal-footer'>
+               <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Fechar</button>
+               <a href='excluir_categoria.php?id_categoria= $id_categoria'' class='btn btn-danger'>Excluir</a>
+             </div>
+           </div>
+         </div>
+       </div>";
     }
     echo "</tbody>";
     echo "</table>";
